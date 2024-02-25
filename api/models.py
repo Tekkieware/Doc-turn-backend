@@ -31,7 +31,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['name']
     objects = NewUserManager()
     
-    objects = NewUserManager()
+    
 
     
+class Document(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    url = models.CharField(blank=False, null=False, max_length= 500)
+    name= models.CharField(blank=False, null=False, max_length= 500)
+
+
+
 

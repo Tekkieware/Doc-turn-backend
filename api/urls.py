@@ -18,6 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from .views import convert_docx_to_pdf
 
 documentaiton_apis = [
     path('docs-gen/', SpectacularAPIView.as_view(), name='schema'),
@@ -28,6 +29,7 @@ documentaiton_apis = [
 urlpatterns = [
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
+    path('doc-to-pdf', convert_docx_to_pdf, name='doc-to-pdf'), 
    
 ] + documentaiton_apis
 
